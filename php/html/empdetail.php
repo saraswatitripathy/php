@@ -197,8 +197,8 @@ include'connection.php';
 
            $sql1="SELECT empid,empname,doj,dol,mas_designation.designation,mas_department.department
               FROM  php.mas_employee
-              left join mas_designation on mas_employee.designation_id=organization_detail.mas_designation.id
-              left join mas_department on mas_employee.department_id=organization_detail.mas_department.id
+              left join mas_designation on mas_employee.designation_id=php.mas_designation.id
+              left join mas_department on mas_employee.department_id=php.mas_department.id
               WHERE ".$search ;
 
            $result1=mysql_query($sql1);
@@ -241,8 +241,8 @@ include'connection.php';
 
        $sql="SELECT empid,empname,doj,dol,mas_designation.designation,mas_department.department
         FROM  php.mas_employee
-        left join mas_designation on mas_employee.designation_id=organization_detail.mas_designation.id
-        left join mas_department on mas_employee.department_id=organization_detail.mas_department.id 
+        left join mas_designation on mas_employee.designation_id=php.mas_designation.id
+        left join mas_department on mas_employee.department_id=php.mas_department.id 
         ORDER BY empid";
 
         $result=mysql_query($sql) or die("not connected");
