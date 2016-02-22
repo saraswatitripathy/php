@@ -25,8 +25,8 @@
 <?php
 if(isset($_POST['submit']))
 { 
- mysql_connect('localhost','root','password') or die(mysql_error());
- mysql_select_db('organization_detail') or die(mysql_error());
+ mysql_connect('127.9.88.2','admincaevTuC','rRsJYwkR-2P2') or die(mysql_error());
+ mysql_select_db('php') or die(mysql_error());
  $mail=$_POST['mail'];
  $sql=mysql_query("select * from member where mail='".$mail."' ") or die(mysql_error());
  $res=mysql_affected_rows();
