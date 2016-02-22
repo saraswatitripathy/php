@@ -17,7 +17,7 @@ include'connection.php';
     $chkid=$_POST['chkbx'];
     foreach ($chkid as $key => $value) {
 
-    $sql4="DELETE FROM organization_detail.mas_employee WHERE empid=".$value;
+    $sql4="DELETE FROM php.mas_employee WHERE empid=".$value;
     $res4=mysql_query($sql4);
 
     }
@@ -196,7 +196,7 @@ include'connection.php';
             }
 
            $sql1="SELECT empid,empname,doj,dol,mas_designation.designation,mas_department.department
-              FROM  organization_detail.mas_employee
+              FROM  php.mas_employee
               left join mas_designation on mas_employee.designation_id=organization_detail.mas_designation.id
               left join mas_department on mas_employee.department_id=organization_detail.mas_department.id
               WHERE ".$search ;
@@ -240,7 +240,7 @@ include'connection.php';
    else{
 
        $sql="SELECT empid,empname,doj,dol,mas_designation.designation,mas_department.department
-        FROM  organization_detail.mas_employee
+        FROM  php.mas_employee
         left join mas_designation on mas_employee.designation_id=organization_detail.mas_designation.id
         left join mas_department on mas_employee.department_id=organization_detail.mas_department.id 
         ORDER BY empid";
