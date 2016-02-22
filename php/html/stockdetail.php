@@ -15,7 +15,7 @@ include'connection.php';
     $chkid=$_POST['chkbx'];
     foreach ($chkid as $key => $value) {
 
-    $sql4="DELETE FROM organization_detail.tblasseststock WHERE stockid=".$value;
+    $sql4="DELETE FROM php.tblasseststock WHERE stockid=".$value;
     $res4=mysql_query($sql4);
 
    }

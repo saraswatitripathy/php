@@ -9,9 +9,9 @@ include'connection.php';
   if(isset($_GET['a']))
     {
     $mysql="SELECT empid,empname,doj,dol,mas_designation.designation,mas_department.department
-    FROM  organization_detail.mas_employee
-    left join mas_designation on mas_employee.designation_id=organization_detail.mas_designation.id
-    left join mas_department on mas_employee.department_id=organization_detail.mas_department.id where empid=".$_GET['a'];
+    FROM  php.mas_employee
+    left join mas_designation on mas_employee.designation_id=php.mas_designation.id
+    left join mas_department on mas_employee.department_id=php.mas_department.id where empid=".$_GET['a'];
       
       $retval1 = mysql_query( $mysql);
            
@@ -197,7 +197,7 @@ include'connection.php';
                   <select name="designation">
                     <option selected="selected">select designation</option>
                     <?php
-                        $select="SELECT * FROM organization_detail.mas_designation";
+                        $select="SELECT * FROM php.mas_designation";
                         $res= mysql_query($select);
 
                         while($row2=mysql_fetch_array($res))
@@ -217,7 +217,7 @@ include'connection.php';
                   <select name="department">
                     <option selected="selected">select department</option>
                     <?php
-                        $select1="SELECT * FROM organization_detail.mas_department";
+                        $select1="SELECT * FROM php.mas_department";
                         $res1= mysql_query($select1);
 
                         while($row3=mysql_fetch_array($res1))

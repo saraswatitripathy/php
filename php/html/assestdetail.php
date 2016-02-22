@@ -16,7 +16,7 @@ include'connection.php';
     $chkid=$_POST['chkbx'];
    foreach ($chkid as $key => $value) {
 
-    $sql4="DELETE FROM organization_detail.mas_assestitem WHERE serialassestid=".$value;
+    $sql4="DELETE FROM php.mas_assestitem WHERE serialassestid=".$value;
     $res4=mysql_query($sql4);
 
      }
@@ -221,9 +221,9 @@ include'connection.php';
               }
 
                 $sql1="SELECT serialassestid,assestname_id,tblasseststock.assestnamee,description,assestcost,mas_assestname.coassestname
-                FROM  organization_detail.mas_assestitem
-                left join mas_assestname on mas_assestitem.assestname_id=organization_detail.mas_assestname.assestnameid
-                left join tblasseststock on mas_assestitem.stock_id=organization_detail.tblasseststock.stockid
+                FROM  php.mas_assestitem
+                left join mas_assestname on mas_assestitem.assestname_id=php.mas_assestname.assestnameid
+                left join tblasseststock on mas_assestitem.stock_id=php.tblasseststock.stockid
                 WHERE ". $search ;
 
                $result1=mysql_query($sql1);
@@ -261,9 +261,9 @@ include'connection.php';
           else{
 
            $sql="SELECT serialassestid,tblasseststock.assestnamee,description,assestcost,mas_assestname.coassestname
-            FROM  organization_detail.mas_assestitem
-            left join mas_assestname on mas_assestitem.assestname_id=organization_detail.mas_assestname.assestnameid
-            left join tblasseststock on mas_assestitem.stock_id=organization_detail.tblasseststock.stockid
+            FROM  php.mas_assestitem
+            left join mas_assestname on mas_assestitem.assestname_id=php.mas_assestname.assestnameid
+            left join tblasseststock on mas_assestitem.stock_id=php.tblasseststock.stockid
             ORDER BY serialassestid";
 
             $result=mysql_query($sql) or die("not connected");

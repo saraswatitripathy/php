@@ -8,10 +8,10 @@ include'connection.php';
   if(isset($_GET['a']))
     {
     $mysql="SELECT transactionid,mas_employee.empid, mas_employee.empname, mas_employee.doj, mas_employee.dol, 
-     tblasseststock.assestnamee,mas_assestitem.serialassestid,mas_assestitem.serialno FROM  organization_detail.tbltransaction 
-     left join mas_employee on tbltransaction.emp_id=organization_detail.mas_employee.empid
-     left join mas_assestitem on tbltransaction.serialassest_id2=organization_detail.mas_assestitem.serialassestid 
-     left join  tblasseststock on tbltransaction.stock_id1=organization_detail.tblasseststock.stockid
+     tblasseststock.assestnamee,mas_assestitem.serialassestid,mas_assestitem.serialno FROM  php.tbltransaction 
+     left join mas_employee on tbltransaction.emp_id=php.mas_employee.empid
+     left join mas_assestitem on tbltransaction.serialassest_id2=php.mas_assestitem.serialassestid 
+     left join  tblasseststock on tbltransaction.stock_id1=php.tblasseststock.stockid
      where transactionid=".$_GET['a'];
           
 
@@ -179,7 +179,7 @@ include'connection.php';
       <td><select name="empname">
           <option selected="selected">Select Employee name</option>
           <?php
-              $select="SELECT * FROM organization_detail.mas_employee";
+              $select="SELECT * FROM php.mas_employee";
               $res= mysql_query($select);
 
               while($row2=mysql_fetch_array($res))
@@ -201,10 +201,10 @@ include'connection.php';
           <?php
               $select="SELECT serialassestid,tblasseststock.assestnamee,serialno,stockid
             from mas_assestitem
-            left join  tblasseststock on mas_assestitem.stock_id=organization_detail.tblasseststock.stockid
+            left join  tblasseststock on mas_assestitem.stock_id=php.tblasseststock.stockid
             where serialassestid NOT IN 
             (select serialassest_id2 from tbltransaction 
-            left join mas_employee on tbltransaction.emp_id = organization_detail.mas_employee.empid
+            left join mas_employee on tbltransaction.emp_id = php.mas_employee.empid
             where leftemp!='yes'and serialassestid= serialassest_id2 )
             order by serialassestid";
               $res= mysql_query($select);
@@ -228,10 +228,10 @@ include'connection.php';
         <?php
             $select="SELECT serialassestid,tblasseststock.assestnamee,serialno,stockid
             from mas_assestitem
-            left join  tblasseststock on mas_assestitem.stock_id=organization_detail.tblasseststock.stockid
+            left join  tblasseststock on mas_assestitem.stock_id=php.tblasseststock.stockid
             where serialassestid NOT IN 
             (select serialassest_id2 from tbltransaction 
-            left join mas_employee on tbltransaction.emp_id = organization_detail.mas_employee.empid
+            left join mas_employee on tbltransaction.emp_id = php.mas_employee.empid
             where leftemp!='yes'and serialassestid= serialassest_id2 )
             order by serialassestid";
 

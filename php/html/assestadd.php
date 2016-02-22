@@ -10,9 +10,9 @@ include'connection.php';
       {
       $mysql="SELECT serialassestid,tblasseststock.assestnamee,description,assestcost,serialno
       ,mas_assestname.coassestname
-      FROM  organization_detail.mas_assestitem
-      left join mas_assestname on mas_assestitem.assestname_id=organization_detail.mas_assestname.assestnameid 
-      left join tblasseststock on mas_assestitem.stock_id=organization_detail.tblasseststock.stockid
+      FROM  php.mas_assestitem
+      left join mas_assestname on mas_assestitem.assestname_id=php.mas_assestname.assestnameid 
+      left join tblasseststock on mas_assestitem.stock_id=php.tblasseststock.stockid
       where serialassestid=".$_GET['a'];
         $retval1 = mysql_query( $mysql);
                
@@ -174,7 +174,7 @@ include'connection.php';
         <select name="coassestname">
           <option selected="selected">select assest </option>
         <?php
-          $select="SELECT * FROM organization_detail.mas_assestname";
+          $select="SELECT * FROM php.mas_assestname";
           $res1= mysql_query($select);
 
           while($row2=mysql_fetch_array($res1))
@@ -195,7 +195,7 @@ include'connection.php';
         <select name="assestnamee">
           <option selected="selected">select assest name</option>
           <?php
-              $select="SELECT * FROM organization_detail.tblasseststock";
+              $select="SELECT * FROM php.tblasseststock";
               $res= mysql_query($select);
 
               while($row3=mysql_fetch_array($res))

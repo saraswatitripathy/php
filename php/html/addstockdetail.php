@@ -9,7 +9,7 @@ include'connection.php';
   if(isset($_GET['a']))
       {
       $mysql="SELECT stockid,assestnamee,quantity,remarks
-      FROM  organization_detail.tblasseststock
+      FROM  php.tblasseststock
        where stockid=".$_GET['a'];
 
       $retval1 = mysql_query( $mysql);
