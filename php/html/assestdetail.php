@@ -240,13 +240,13 @@ include'connection.php';
                $coassestname=$row1['coassestname'];
 
 
-               echo "<tr height= 50>
+               echo "<tr height= 50 >
               <td width=20><input type='checkbox' value=".$serialassestid." name='chkbx[]' class='resultcheckbox'></td>
-              <td width=80>".$serialassestid."</td>
-              <td width=170>".$assestnamee."</td>
-              <td width=450>".$description."</td>
-              <td width=130>".$assestcost."</td>
-              <td width=70><button type='button' name='edit' onclick='editData($serialassestid)'> Edit</button></td>
+              <td width=82>".$serialassestid."</td>
+              <td width=178>".$assestnamee."</td>
+              <td width=460>".$description."</td>
+              <td width=131>".$assestcost."</td>
+              <td width=85><button type='button' name='edit' onclick='editData($serialassestid)'> Edit</button></td>
               </tr>";
               
                }
