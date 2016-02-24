@@ -26,7 +26,7 @@ include'connection.php';
 
 <html>
 <head>
-  <title>assestdetail</title>
+  <title>assetdetail</title>
   <link href="login.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6-dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6-dist/css/bootstrap.min.css">
@@ -108,12 +108,12 @@ include'connection.php';
         </ul>
         </li>
         <li>
-          <a href='#'>Assest</a>
+          <a href='#'>Asset</a>
         <ul>
         <li>
-          <a href='assestdetail.php'>Assest Detail</a></li>
+          <a href='assestdetail.php'>Asset Detail</a></li>
         <li>
-          <a href='assestadd.php'>Add Assest</a></li>
+          <a href='assestadd.php'>Add Asset</a></li>
         </ul>
         </li>
         <li>
@@ -146,7 +146,7 @@ include'connection.php';
               <a href="empdetail.php"><li type="disc">Employee detail</li></a>
           
               <a href="stockdetail.php" ><li type="disc">Stock detail</li></a>
-              <a href="assestdetail.php" ><li type="disc">Assest detail</li></a>
+              <a href="assestdetail.php" ><li type="disc">Asset detail</li></a>
           
               <a href="transactiondetail.php"><li type="disc">Assignment</li></a>
        
@@ -156,7 +156,7 @@ include'connection.php';
      <div class="contnt" align="right" style="height: auto;" id="contnt">
       <div class="panel panel-primary">
          <div class="panel-heading">
-          <h3 class="panel-title">Assest search
+          <h3 class="panel-title">Asset search
             <input type=button id='bt1' value="hide" style="float: right"; "font-color:black"; onclick="setVisibility('panel-body');";></h3>
          </div>
           <div class="panel-body" id="panel-body">
@@ -168,7 +168,7 @@ include'connection.php';
               </li>
               <span style="padding-left:60px">
               <li>
-                <label>Assest Name:</label>
+                <label>Asset Name:</label>
                 <input type="text" name="assestnamee" id="assestnamee">
               </li>
             </ol>
@@ -192,9 +192,9 @@ include'connection.php';
               <tr height=40 style="background:url(img/bg1.jpeg);">
               <th width=21><input type="checkbox"></th>
               <th width=80><font color="white">Serial No</th>
-              <th width=180><font color="white">Assest Name</th>
-              <th width=470><font color="white">Assest description</th>
-              <th width=135><font color="white">Assest Cost</th>
+              <th width=180><font color="white">Asset Name</th>
+              <th width=470><font color="white">Asset description</th>
+              <th width=135><font color="white">Asset Cost</th>
               <th width=85><font color="white">Action</th>
               </tr>
 
