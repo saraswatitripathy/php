@@ -110,12 +110,12 @@ include'connection.php';
       </ul>
       </li>
       <li>
-        <a href='#'>Assest</a>
+        <a href='#'>Asset</a>
       <ul>
       <li>
-        <a href='assestdetail.php'>Assest Detail</a></li>
+        <a href='assestdetail.php'>Asset Detail</a></li>
       <li>
-        <a href='assestadd.php'>Add Assest</a></li>
+        <a href='assestadd.php'>Add Asset</a></li>
       </ul>
       </li>
       <li>
@@ -124,7 +124,7 @@ include'connection.php';
         <li>
           <a href='stockdetail.php'>Stock Detail</a></li>
         <li>
-          <a href='addstockdetail.php'> Add Stock Assest</li>
+          <a href='addstockdetail.php'> Add Stock Asset</li>
       </ul>
         <li><a href='#'>Assignment</a>
       <ul>
@@ -144,7 +144,7 @@ include'connection.php';
           <a href="empdetail.php"><li type="disc">Employee detail</li></a>
       
           <a href="stockdetail.php" ><li type="disc">Stock detail</li></a>
-          <a href="assestdetail.php" ><li type="disc">Assest detail</li></a>
+          <a href="assestdetail.php" ><li type="disc">Asset detail</li></a>
       
           <a href="transactiondetail.php"><li type="disc">Assignment</li></a>
    
@@ -155,7 +155,7 @@ include'connection.php';
   <div class="contnt" align="right" width="80%">
   <div class="panel panel-primary">
    <div class="panel-heading">
-    <h3 class="panel-title">Add Assest</h3>
+    <h3 class="panel-title">Add Asset</h3>
    </div>
    <div class="panel-body" id="cntnt">
     <form name="adddetail" method = "post" action = "<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="off">
@@ -169,10 +169,10 @@ include'connection.php';
            
         
       <tr>
-      <td width = "200">Assest:</td>
+      <td width = "200">Asset:</td>
       <td>
         <select name="coassestname">
-          <option selected="selected">select assest </option>
+          <option selected="selected">select asset </option>
         <?php
           $select="SELECT * FROM php.mas_assestname";
           $res1= mysql_query($select);
@@ -190,10 +190,10 @@ include'connection.php';
       </tr>
 
       <tr>
-      <td width = "200">Assest Name: </td>
+      <td width = "200">Asset Name: </td>
       <td>
         <select name="assestnamee">
-          <option selected="selected">select assest name</option>
+          <option selected="selected">select asset name</option>
           <?php
               $select="SELECT * FROM php.tblasseststock";
               $res= mysql_query($select);
@@ -211,7 +211,7 @@ include'connection.php';
        </tr>
 
        <tr>
-          <td width = "200">Assest cost:</td>
+          <td width = "200">Asset cost:</td>
           <td><input name = "assestcost" type = "text" id = "assestcost" value= "<?php echo $assestcost;?>"></td>
        </tr>
                 
