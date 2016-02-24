@@ -93,12 +93,12 @@ include'connection.php';
     </ul>
     </li>
     <li>
-      <a href='#'>Assest</a>
+      <a href='#'>Asset</a>
     <ul>
     <li>
-      <a href='assestdetail.php'>Assest Detail</a></li>
+      <a href='assestdetail.php'>Asset Detail</a></li>
     <li>
-      <a href='assestadd.php'>Add Assest</a></li>
+      <a href='assestadd.php'>Add Asset</a></li>
     </ul>
     </li>
     <li>
@@ -107,7 +107,7 @@ include'connection.php';
       <li>
         <a href='stockdetail.php'>Stock Detail</a></li>
     <li>
-      <a href='addstockdetail.php'> Add Stock Assest</li>
+      <a href='addstockdetail.php'> Add Stock Asset</li>
     </ul>
     <li><a href='#'>Assignment</a>
       <ul>
@@ -127,7 +127,7 @@ include'connection.php';
           <a href="empdetail.php"><li type="disc">Employee detail</li></a>
       
           <a href="stockdetail.php" ><li type="disc">Stock detail</li></a>
-          <a href="assestdetail.php" ><li type="disc">Assest detail</li></a>
+          <a href="assestdetail.php" ><li type="disc">Asset detail</li></a>
       
           <a href="transactiondetail.php"><li type="disc">Assignment</li></a>
    
@@ -137,7 +137,7 @@ include'connection.php';
      <div class="contnt" align="right" height="100%" width="80%" id="contnt">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">Assest assignment search
+          <h3 class="panel-title">Asset assignment search
             <input type=button id='bt1' value="hide" style="float: right"; "font-color:black"; onclick="setVisibility('panel-body');";></h3>
         </div>
         <div class="panel-body" id="panel-body">
@@ -167,7 +167,7 @@ include'connection.php';
                 <input type="text" name="empname" id="empname">
               </li>
               <li>
-                <label>Assest name:</label>
+                <label>Asset name:</label>
                 <input type="text" name="assestnamee" id="assestnamee">
               </li><span style="padding-left:150px">
               <li>
@@ -195,7 +195,7 @@ include'connection.php';
           <th width=190><font color="white">Id</th>
           <th width=150><font color="white">employee Id</th>
           <th width=300><font color="white">Employee Name</th>
-          <th width=250><font color="white">Assest name</th>
+          <th width=250><font color="white">Asset name</th>
           <th width=200><font color="white">Serial No</th>
           <th width=300><font color="white">Date of assigning</th>
           <th width=250><font color="white">Date of releasing</th>

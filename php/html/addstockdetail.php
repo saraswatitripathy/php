@@ -112,12 +112,12 @@ include'connection.php';
       </ul>
       </li>
       <li>
-        <a href='#'>Assest</a>
+        <a href='#'>Asset</a>
       <ul>
       <li>
-        <a href='assestdetail.php'>Assest Detail</a></li>
+        <a href='assestdetail.php'>Asset Detail</a></li>
       <li>
-        <a href='assestadd.php'>Add Assest</a></li>
+        <a href='assestadd.php'>Add Asset</a></li>
       </ul>
       </li>
       <li>
@@ -126,7 +126,7 @@ include'connection.php';
       <li>
         <a href='stockdetail.php'>Stock Detail</a></li>
       <li>
-        <a href='addstockdetail.php'> Add Stock Assest</li>
+        <a href='addstockdetail.php'> Add Stock Asset</li>
       </ul>
       <li><a href='#'>Assignment</a>
       <ul>
@@ -146,7 +146,7 @@ include'connection.php';
           <a href="empdetail.php"><li type="disc">Employee detail</li></a>
       
           <a href="stockdetail.php" ><li type="disc">Stock detail</li></a>
-          <a href="assestdetail.php" ><li type="disc">Assest detail</li></a>
+          <a href="assestdetail.php" ><li type="disc">Asset detail</li></a>
       
           <a href="transactiondetail.php"><li type="disc">Assignment</li></a>
    
@@ -169,7 +169,7 @@ include'connection.php';
            </tr>
                      
            <tr>
-              <td width = "200">Assest Name:</td>
+              <td width = "200">Asset Name:</td>
               <td><input name = "assestnamee" type = "text" id = "assestnamee"  value= "<?php echo $assestnamee;?>">
               </td>
             </tr>

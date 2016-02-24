@@ -90,12 +90,12 @@ include'connection.php';
       </ul>
       </li>
       <li>
-        <a href='#'>Assest</a>
+        <a href='#'>Asset</a>
       <ul>
       <li>
-        <a href='assestdetail.php'>Assest Detail</a></li>
+        <a href='assestdetail.php'>Asset Detail</a></li>
       <li>
-        <a href='assestadd.php'>Add Assest</a></li>
+        <a href='assestadd.php'>Add Asset</a></li>
       </ul>
       </li>
       <li>
@@ -104,7 +104,7 @@ include'connection.php';
       <li>
         <a href='stockdetail.php'>Stock Detail</a></li>
       <li>
-        <a href='addstockdetail.php'> Add Stock Assest</li>
+        <a href='addstockdetail.php'> Add Stock Asset</li>
       </ul>
       <li><a href='#'>Assignment</a>
       <ul>
@@ -124,7 +124,7 @@ include'connection.php';
           <a href="empdetail.php"><li type="disc">Employee detail</li></a>
       
           <a href="stockdetail.php" ><li type="disc">Stock detail</li></a>
-          <a href="assestdetail.php" ><li type="disc">Assest detail</li></a>
+          <a href="assestdetail.php" ><li type="disc">Asset detail</li></a>
       
           <a href="transactiondetail.php"><li type="disc">Assignment</li></a>
    
@@ -146,7 +146,7 @@ include'connection.php';
               </li>
               <span style="padding-left:60px">
               <li>
-                <label>Assest Name:</label>
+                <label>Asset Name:</label>
                 <input type="text" name="assestnamee" id="assestnamee">
               </li>
             </ol>
@@ -168,7 +168,7 @@ include'connection.php';
        <tr height=40 style="background:url(img/bg1.jpeg);">
        <th width=100><input type="checkbox"></th>
        <th width=100><font color="white">Stock id</th>
-       <th width=350><font color="white">Assest Name</th>
+       <th width=350><font color="white">Asset Name</th>
        <th width=270><font color="white">Quantity</th>
        <th width=200><font color="white">Total count</th>
        <th width=250><font color="white">Action</th>

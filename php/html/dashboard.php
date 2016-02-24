@@ -28,16 +28,16 @@ $_SESSION['id'];
 					<li><a href='empadd.php'>Add Employee</a></li>
 				</ul>
 			  </li>
-				<li><a href='#'>Assest</a>
+				<li><a href='#'>Asset</a>
 				  <ul>
-					<li><a href='assestdetail.php'>Assest Detail</a></li>
-					<li><a href='assestadd.php'>Add Assest</a></li>
+					<li><a href='assestdetail.php'>Asset Detail</a></li>
+					<li><a href='assestadd.php'>Add Asset</a></li>
 				  </ul>
 				</li>
 				<li><a href='#'>Stock Detail</a>
 				 <ul>
 					<li><a href='stockdetail.php'>Stock Detail</a></li>
-					<li><a href='addstockdetail.php'> Add Stock Assest</li>
+					<li><a href='addstockdetail.php'> Add Stock Asset</li>
 				</ul>
 				<li><a href='#'>Assignment</a>
 				 <ul>
@@ -57,7 +57,7 @@ $_SESSION['id'];
           <a href="empdetail.php"><li type="disc">Employee detail</li></a>
       
           <a href="stockdetail.php" ><li type="disc">Stock detail</li></a>
-          <a href="assestdetail.php" ><li type="disc">Assest detail</li></a>
+          <a href="assestdetail.php" ><li type="disc">Asset detail</li></a>
       
           <a href="transactiondetail.php"><li type="disc">Assignment</li></a>
    
@@ -89,9 +89,9 @@ $_SESSION['id'];
 	           </div>
 	      	   <div class="detail4">
 	      	   	<a href="assestdetail.php"><img src="img/ru.jpeg" height="50px" width="50px" align="left"></img></a>
-	      	      <h3 align="right"><a href="assestdetail.php"><u>Assest detail</u></a></h3>
-                   <h5 align="justify"> Assests is mainly of two type in an organization.Mainly,Hardware assests and Software assests.
-                   Click <a href="assesttype.php"><u>here</u></a>, to get the assests type detail</h5>
+	      	      <h3 align="right"><a href="assestdetail.php"><u>Asset detail</u></a></h3>
+                   <h5 align="justify"> Assets is mainly of two type in an organization.Mainly,Hardware assets and Software assets.
+                   Click <a href="assesttype.php"><u>here</u></a>, to get the assets type detail</h5>
 	           </div>
        </div>
    </div>
