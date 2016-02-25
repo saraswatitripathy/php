@@ -69,6 +69,12 @@ include'connection.php';
    
 
   }
+  function trackData(getdata){
+    //alert('data.php?b='+getdata);
+    window.location='data.php?b='+getdata;
+   
+
+  }
   function setVisibility(id) {
   if(document.getElementById('bt1').value=='hide'){
   document.getElementById('bt1').value = 'show';
@@ -231,6 +237,8 @@ include'connection.php';
            <td>".$department."</td>
            <td>".$doj."</td>
            <td><button type='button' name='edit' onclick='editData($empid)'> Edit</button></td>
+            <button type='button' name='data' onclick='trackData($empid)'> Data</button></td>
+
            </tr>";
           
            }
@@ -271,6 +279,8 @@ include'connection.php';
           <td>".$department."</td>
           <td>".$doj."</td>
           <td><button type='button' name='edit' onclick='editData($empid)'> Edit</button></td>
+          <button type='button' name='data' onclick='trackData($empid)'> Data</button></td>
+
           </tr>";
         $rows=mysql_num_rows(mysql_query("select * from mas_employee"));
            $total=ceil($rows/$limit);
