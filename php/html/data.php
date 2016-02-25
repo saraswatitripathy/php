@@ -89,7 +89,6 @@ include'connection.php';
           <th width=200><font color="white">Serial No</th>
           <th width=300><font color="white">Date of assigning</th>
           <th width=250><font color="white">Date of releasing</th>
-          <th width=150><font color="white">Action</th>
         </tr>
         <?php
 
@@ -121,7 +120,6 @@ include'connection.php';
          <td>".$slno."</td>
          <td>".$assigndate."</td>
          <td>".$releasedate."</td>
-         <td><button type='button' name='edit' onclick='editData($transactionid)'> Edit</button></td>
          </tr>";
         
          }
