@@ -236,7 +236,7 @@ include'connection.php';
            <td>".$designation."</td>
            <td>".$department."</td>
            <td>".$doj."</td>
-           <td><button type='button' name='edit' onclick='editData($empid)'> Edit</button></td>
+           <td><button type='button' name='edit' onclick='editData($empid)'> Edit</button>
             <button type='button' name='data' onclick='trackData($empid)'> Data</button></td>
 
            </tr>";
@@ -278,7 +278,7 @@ include'connection.php';
           <td>".$designation."</td>
           <td>".$department."</td>
           <td>".$doj."</td>
-          <td><button type='button' name='edit' onclick='editData($empid)'> Edit</button></td>
+          <td><button type='button' name='edit' onclick='editData($empid)'> Edit</button>
           <button type='button' name='data' onclick='trackData($empid)'> Data</button></td>
 
           </tr>";
