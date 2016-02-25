@@ -195,7 +195,7 @@ include'connection.php';
               onclick=" return deletedata()">
           <hr>
              <div class="fetchng" style="height: auto;">
-           <table border='1'class="tbl" id="scroll" style="height: auto;"> 
+           <table border='1'class="tbl" style="height: auto;"> 
              <thead>
               <tr height=40 style="background:url(img/bg1.jpeg);">
               <th width=21><input type="checkbox"></th>
