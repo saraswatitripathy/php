@@ -94,10 +94,10 @@ include'connection.php';
         <?php
 
           $sql1="SELECT transactionid,mas_employee.empname, mas_employee.doj, mas_employee.dol, tblasseststock.stockid,
-          tblasseststock.assestnamee,mas_assestitem.serialassestid, mas_assestitem.serialno FROM  organization_detail.tbltransaction 
-          left join mas_employee on tbltransaction.emp_id=organization_detail.mas_employee.empid
-          left join mas_assestitem on tbltransaction.serialassest_id2=organization_detail.mas_assestitem.serialassestid
-          left join  tblasseststock on tbltransaction.stock_id1=organization_detail.tblasseststock.stockid
+          tblasseststock.assestnamee,mas_assestitem.serialassestid, mas_assestitem.serialno FROM  php.tbltransaction 
+          left join mas_employee on tbltransaction.emp_id=php.mas_employee.empid
+          left join mas_assestitem on tbltransaction.serialassest_id2=php.mas_assestitem.serialassestid
+          left join  tblasseststock on tbltransaction.stock_id1=php.tblasseststock.stockid
           WHERE empid=".$_GET['b'];
 
            $result1=mysql_query($sql1);
