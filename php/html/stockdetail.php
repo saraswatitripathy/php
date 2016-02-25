@@ -4,6 +4,14 @@ session_start();
 if (isset($_SESSION['id'])) {
 $_SESSION['id'];
 include'connection.php';
+      $start=0;
+      $limit=10;
+
+      if(isset($_GET['page']))
+      {
+      $page=$_GET['page'];
+      $start=($page-1)*$limit;
+      }
 
   if(isset($_POST['add']))
     {
@@ -202,7 +210,7 @@ include'connection.php';
         from tbltransaction 
         left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
         right join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id WHERE $search
-        group by tblasseststock.assestnamee";
+        group by tblasseststock.assestnamee ";
 
          $result=mysql_query($sql1) or die("not connected");
           $count = mysql_num_rows($result);
@@ -257,7 +265,7 @@ include'connection.php';
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
           right join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
-          group by tblasseststock.assestnamee ORDER BY stockid";
+          group by tblasseststock.assestnamee ORDER BY stockid LIMIT $start, $limit";
 
         $result=mysql_query($sql) or die("not connected");
          while($row=mysql_fetch_array($result))
@@ -268,7 +276,7 @@ include'connection.php';
             left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
             left join mas_employee on tbltransaction.emp_id = mas_employee.empid
             left join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
-            where leftemp ='yes'and stockid=".$row['stockid']." group by tblasseststock.assestnamee order by stockid;";
+            where leftemp ='yes'and stockid=".$row['stockid']." group by tblasseststock.assestnamee order by stockid LIMIT $start, $limit;";
             $result1=mysql_query($query) ;
             $count=mysql_num_rows($result1);
             if($count>0)
@@ -294,10 +302,19 @@ include'connection.php';
            </tr>";
         
       
-            }
-          }
-       ?>
-          
+           $rows=mysql_num_rows(mysql_query("select * from tblasseststock"));
+           $total=ceil($rows/$limit);
+         }
+    }   echo"</table>";
+     echo "<ul class='pager' id='pag'>";
+      for($i=1;$i<=$total;$i++)
+      {
+      if($i==$page) { echo "<li ><a href='?page=".$i."'>".$i."</a></li>"; }
+
+      else { echo "<li><a href='?page=".$i."'>".$i."</a></li>"; }
+      }
+      echo "</ul>";
+      ?>
             </table>
         
         </div>

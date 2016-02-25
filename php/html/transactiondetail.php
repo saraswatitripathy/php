@@ -5,6 +5,14 @@ session_start();
 if (isset($_SESSION['id'])) {
 $_SESSION['id'];
 include'connection.php';
+      $start=0;
+      $limit=10;
+
+      if(isset($_GET['page']))
+      {
+      $page=$_GET['page'];
+      $start=($page-1)*$limit;
+      }
 
         
   if(isset($_POST['add']))
@@ -289,7 +297,7 @@ include'connection.php';
        left join mas_employee on tbltransaction.emp_id=php.mas_employee.empid
        left join mas_assestitem on tbltransaction.serialassest_id2=php.mas_assestitem.serialassestid
        left join  tblasseststock on tbltransaction.stock_id1=php.tblasseststock.stockid
-       order by transactionid";
+       order by transactionid LIMIT $start, $limit";
               
 
 
@@ -316,11 +324,19 @@ include'connection.php';
          <td>".$releasedate."</td>
          <td><button type='button' name='edit' onclick='editData($transactionid)'> Edit</button></td>
          </tr>";
+         $rows=mysql_num_rows(mysql_query("select * from tbltransaction"));
+           $total=ceil($rows/$limit);
          }
-     }
+    }   echo"</table>";
+     echo "<ul class='pager' id='pag'>";
+      for($i=1;$i<=$total;$i++)
+      {
+      if($i==$page) { echo "<li ><a href='?page=".$i."'>".$i."</a></li>"; }
 
-            
-    ?>
+      else { echo "<li><a href='?page=".$i."'>".$i."</a></li>"; }
+      }
+      echo "</ul>";
+      ?>
           
         </table>
         </div>

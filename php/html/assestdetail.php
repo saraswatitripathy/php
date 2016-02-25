@@ -5,6 +5,14 @@ session_start();
 if (isset($_SESSION['id'])) {
 $_SESSION['id'];
 include'connection.php';
+      $start=0;
+      $limit=10;
+
+      if(isset($_GET['page']))
+      {
+      $page=$_GET['page'];
+      $start=($page-1)*$limit;
+      }
  
   if(isset($_POST['add']))
     {
@@ -264,7 +272,7 @@ include'connection.php';
             FROM  php.mas_assestitem
             left join mas_assestname on mas_assestitem.assestname_id=php.mas_assestname.assestnameid
             left join tblasseststock on mas_assestitem.stock_id=php.tblasseststock.stockid
-            ORDER BY serialassestid";
+            ORDER BY serialassestid LIMIT $start, $limit";
 
             $result=mysql_query($sql) or die("not connected");
              while($row=mysql_fetch_array($result))
@@ -283,9 +291,19 @@ include'connection.php';
               <td width=130>".$assestcost."</td>
               <td width=70><button type='button' name='edit' onclick='editData($serialassestid)'> Edit</button></td>
               </tr>";
-          }
-     }
-?>
+          $rows=mysql_num_rows(mysql_query("select * from mas_assestitem"));
+           $total=ceil($rows/$limit);
+         }
+    }   echo"</table>";
+     echo "<ul class='pager' id='pag'>";
+      for($i=1;$i<=$total;$i++)
+      {
+      if($i==$page) { echo "<li ><a href='?page=".$i."'>".$i."</a></li>"; }
+
+      else { echo "<li><a href='?page=".$i."'>".$i."</a></li>"; }
+      }
+      echo "</ul>";
+      ?>
                </table>
         
         </div>
