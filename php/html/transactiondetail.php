@@ -200,14 +200,14 @@ include'connection.php';
            <table border='1' class="tbl">
           <tr height=40 style="background:url(img/bg1.jpeg);">
           <th width=80><input type="checkbox"></th>
-          <th width=190><font color="white">Id</th>
-          <th width=150><font color="white"><h4 align="center">Employee Id</h4></th>
+          <th width=120><font color="white">Id</th>
+          <th width=170><font color="white"><h4 align="center">Employee Id</h4></th>
           <th width=300><font color="white"><h4 align="center">Employee Name</h4></th>
           <th width=250><font color="white"><h4 align="center">Asset name</h4></th>
           <th width=200><font color="white"><h4 align="center">Serial No</h4></th>
           <th width=300><font color="white"><h4 align="center">Date of assigning</h4></th>
-          <th width=250><font color="white"><h4 align="center">Date of releasing</h4></th>
-          <th width=150><font color="white"><h4 align="center">Action</h4></th>
+          <th width=300><font color="white"><h4 align="center">Date of releasing</h4></th>
+          <th width=130><font color="white"><h4 align="center">Action</h4></th>
         </tr>
 
 
