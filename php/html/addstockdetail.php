@@ -11,7 +11,7 @@ include'connection.php';
       $mysql="SELECT stockid,assestnamee,quantity,remarks1,mas_vendor.vname
       FROM  php.tblasseststock
       left join mas_vendor on tblasseststock.vendor_id=organization_detail.mas_vendor.vid
-       where stockid=".$_GET['a']];
+       where stockid=".$_GET['a'];
 
       $retval1 = mysql_query( $mysql);
 
