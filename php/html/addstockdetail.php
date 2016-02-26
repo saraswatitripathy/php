@@ -8,7 +8,7 @@ include'connection.php';
 
   if(isset($_GET['a']))
       {
-      $mysql="SELECT stockid,assestnamee,quantity,remarks1,mas_vendor.vname
+      $mysql="SELECT stockid,assestnamee,quantity,remarks1,mas_vendor.vname,purchasedate
       FROM  php.tblasseststock
       left join mas_vendor on tblasseststock.vendor_id=php.mas_vendor.vid
        where stockid=".$_GET['a'];
@@ -25,6 +25,7 @@ include'connection.php';
       $remarks1=$row1['remarks1'];
       $vid=$row1['vendor_id'];
       $vname=$row1['vname'];
+      $purchasedate=date('d/m/y',strtotime($row1['purchasedate']));
     }
 
   if(isset($_POST['submit'])) {
@@ -41,14 +42,16 @@ include'connection.php';
       $remarks1=$_POST['remarks1'];
       $vid=$_POST['vendor_id'];
       $vname=$_POST['vname'];
+      $purchasedate=date('Y-m-d',strtotime($_POST['purchasedate']));
+
 
 
        if($stockid1=='')
        {
 
 
-       $sql = "INSERT INTO tblasseststock". "(assestnamee,quantity,remarks1,vendor_id) ". 
-      "VALUES('".$assestnamee."','".$quantity."','".$remarks."','".$vname."')";
+       $sql = "INSERT INTO tblasseststock". "(assestnamee,quantity,remarks1,vendor_id,purchasedate) ". 
+      "VALUES('".$assestnamee."','".$quantity."','".$remarks."','".$vname."','".$purchasedate."')";
      
   
            $retval = mysql_query( $sql);
@@ -57,7 +60,8 @@ include'connection.php';
   else
       {
        $mysql1="UPDATE tblasseststock SET assestnamee='".$assestnamee."',
-         quantity='".$quantity."',remarks1='".$remarks1."',vendor_id='".$vname."' where stockid=".$stockid1;
+         quantity='".$quantity."',remarks1='".$remarks1."',vendor_id='".$vname."' ,purchasedate='".$purchasedate."'
+         where stockid=".$stockid1;
 
       $retval1 = mysql_query( $mysql1);
       
@@ -79,6 +83,11 @@ include'connection.php';
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script>
+     $(function() {
+    $( ".datepicker" ).datepicker();
+
+    });
+
 
     function addconfig(){
       var x = document.forms["adddetail"]["assestnamee"].value;
@@ -205,6 +214,11 @@ include'connection.php';
                         </select><br/>
                   </td>
            </tr>
+           <tr>
+                <td width = "200">Purchase Date:</td>
+                <td><input name = "purchasedate" type = "text" id = "purchasedate" class="datepicker" value= "<?php echo $purchasedate;?>">
+                </td>
+             </tr>
 
            <tr>
               <td width = "200">Remarks:</td>

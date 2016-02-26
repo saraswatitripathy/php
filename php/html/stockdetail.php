@@ -176,12 +176,13 @@ include'connection.php';
        <tr height=40 style="background:url(img/bg1.jpeg);">
        <th width=100><input type="checkbox"></th>
        <th width=100><font color="white"><h4 align="center">Stock id</h4></th>
-       <th width=350><font color="white"><h4 align="center">Asset Name</h4></th>
-       <th width=200><font color="white"><h4 align="center">Quantity</h4></th>
-       <th width=200><font color="white"><h4 align="center">Total count</h4></th>
-       <th width=270><font color="white"><h4 align="center">Vender Name</h4></th>
+       <th width=300><font color="white"><h4 align="center">Asset Name</h4></th>
+       <th width=100><font color="white"><h4 align="center">Quantity</h4></th>
+       <th width=150><font color="white"><h4 align="center">Total count</h4></th>
+       <th width=170><font color="white"><h4 align="center">Purchase Date</h4></th>
+       <th width=220><font color="white"><h4 align="center">Vender Name</h4></th>
        <th width=160><font color="white"><h4 align="center">Website</h4></th>
-       <th width=250><font color="white"><h4 align="center">Action</h4></th>
+       <th width=100><font color="white"><h4 align="center">Action</h4></th>
        </tr>
 
 
@@ -206,7 +207,7 @@ include'connection.php';
               $search = "assestnamee='".$assestname."' and stockid='".$stockid."'";
           }
 
-        $sql1="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
+        $sql1="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,tblasseststock.purchasedate,
           if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
@@ -243,6 +244,7 @@ include'connection.php';
           $quantity=$row1['quantity'];
            $vname=$row1['vname'];
           $website=$row1['website'];
+          $purchasedate=$row1['purchasedate'];
            
 
         echo "<tr height=40>
@@ -250,8 +252,9 @@ include'connection.php';
         <td>".$row1['stockid']."</td>
         <td>".$assestname."</td>
         <td>".$quantity."</td>
-         <td>".$totalcount1."</td>
-         <td>".$vname."</td>
+        <td>".$totalcount1."</td>
+        <td>".$purchasedate."</td>
+        <td>".$vname."</td>
         <td>".$website."</td>
         <td><button type='button' name='edit' onclick='editData(".$row1['stockid'].")'> Edit</button></td>
          </tr>";
@@ -267,7 +270,7 @@ include'connection.php';
 
    else{
 
-       $sql="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
+       $sql="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,tblasseststock.purchasedate,
           if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
@@ -301,15 +304,17 @@ include'connection.php';
            $quantity=$row['quantity'];
             $vname=$row['vname'];
            $website=$row['website'];
+           $purchasedate=$row['purchasedate'];
 
           echo "<tr height=40>
           <td><input type='checkbox' value=".$row['stockid']." name='chkbx[]' class='resultcheckbox'></td>
           <td>".$row['stockid']."</td>
           <td>".$assestname."</td>
           <td>".$quantity."</td>
-           <td>".$totalcount1."</td>
-           <td>".$vname."</td>
-           <td>".$website."</td>
+          <td>".$totalcount1."</td>
+          <td>".$purchasedate."</td>
+          <td>".$vname."</td>
+          <td>".$website."</td>
           <td><button type='button' name='edit' onclick='editData(".$row['stockid'].")'> Edit</button></td>
            </tr>";
         
