@@ -175,13 +175,13 @@ include'connection.php';
        <table border='1' class="tbl">
        <tr height=40 style="background:url(img/bg1.jpeg);">
        <th width=100><input type="checkbox"></th>
-       <th width=100><font color="white">Stock id</th>
-       <th width=350><font color="white">Asset Name</th>
-       <th width=270><font color="white">Quantity</th>
-       <th width=200><font color="white">Total count</th>
-       <th width=250><font color="white">Vender Name</th>
-       <th width=160><font color="white">Website</th>
-       <th width=250><font color="white">Action</th>
+       <th width=100><font color="white"><h4 align="center">Stock id</h4></th>
+       <th width=350><font color="white"><h4 align="center">Asset Name</h4></th>
+       <th width=270><font color="white"><h4 align="center">Quantity</h4></th>
+       <th width=200><font color="white"><h4 align="center">Total count</h4></th>
+       <th width=250><font color="white"><h4 align="center">Vender Name</h4></th>
+       <th width=160><font color="white"><h4 align="center">Website</h4></th>
+       <th width=250><font color="white"><h4 align="center">Action</h4></th>
        </tr>
 
 

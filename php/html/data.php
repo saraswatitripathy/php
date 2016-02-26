@@ -84,12 +84,12 @@ include'connection.php';
           <tr height=40 style="background:url(img/bg1.jpeg);">
          
           <th width=190><font color="white">Id</th>
-          <th width=300><font color="white">Employee Name</th>
-          <th width=250><font color="white">Assest name</th>
-          <th width=200><font color="white">Serial No</th>
-          <th width=300><font color="white">Date of assigning</th>
-          <th width=250><font color="white">Date of releasing</th>
-          <th width=250><font color="white">Remarks</th>
+          <th width=300><font color="white"><h4 align="center">Employee Name</h4></th>
+          <th width=250><font color="white"><h4 align="center">Assest name</h4></th>
+          <th width=200><font color="white"><h4 align="center">Serial No</h4></th>
+          <th width=300><font color="white"><h4 align="center">Date of assigning</h4></th>
+          <th width=250><font color="white"><h4 align="center">Date of releasing</h4></th>
+          <th width=250><font color="white"><h4 align="center">Remarks</h4></th>
         </tr>
         <?php
 

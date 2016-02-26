@@ -199,11 +199,11 @@ include'connection.php';
              <thead>
               <tr height=40 style="background:url(img/bg1.jpeg);">
               <th width=21><input type="checkbox"></th>
-              <th width=80><font color="white">Assest Id</th>
-              <th width=180><font color="white">Asset Name</th>
-              <th width=470><font color="white">Asset description</th>
-              <th width=135><font color="white">Asset Cost</th>
-              <th width=85><font color="white">Action</th>
+              <th width=80><font color="white"><h4 align="center">Assest Id</h4></th>
+              <th width=180><font color="white"><h4 align="center">Asset Name</h4></th>
+              <th width=470><font color="white"><h4 align="center">Asset description</h4></th>
+              <th width=135><font color="white"><h4 align="center">Asset Cost</h4></th>
+              <th width=85><font color="white"><h4 align="center">Action</h4></th>
               </tr>
 
             </thead>

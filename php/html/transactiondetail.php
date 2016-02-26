@@ -201,13 +201,13 @@ include'connection.php';
           <tr height=40 style="background:url(img/bg1.jpeg);">
           <th width=80><input type="checkbox"></th>
           <th width=190><font color="white">Id</th>
-          <th width=150><font color="white">Employee Id</th>
-          <th width=300><font color="white">Employee Name</th>
-          <th width=250><font color="white">Asset name</th>
-          <th width=200><font color="white">Serial No</th>
-          <th width=300><font color="white">Date of assigning</th>
-          <th width=250><font color="white">Date of releasing</th>
-          <th width=150><font color="white">Action</th>
+          <th width=150><font color="white"><h4 align="center">Employee Id</h4></th>
+          <th width=300><font color="white"><h4 align="center">Employee Name</h4></th>
+          <th width=250><font color="white"><h4 align="center">Asset name</h4></th>
+          <th width=200><font color="white"><h4 align="center">Serial No</h4></th>
+          <th width=300><font color="white"><h4 align="center">Date of assigning</h4></th>
+          <th width=250><font color="white"><h4 align="center">Date of releasing</h4></th>
+          <th width=150><font color="white"><h4 align="center">Action</h4></th>
         </tr>
 
 

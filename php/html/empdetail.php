@@ -181,12 +181,12 @@ include'connection.php';
            <table border='1'class="tbl">
          <tr height=40 style="background:url(img/bg1.jpeg);">
          <th width=100><input type="checkbox"></th>
-         <th width=150><font color="white">Employee id</font></th>
-         <th width=300><font color="white">Employee Name</font></th>
-         <th width=250><font color="white">Designation</font></th>
-         <th width=250><font color="white">Department</font></th>
-         <th width=250><font color="white">Date of joining</font></th>
-         <th width=200><font color="white">Action</font></th>
+         <th width=150><font color="white"><h4 align="center">Employee id</h4></font></th>
+         <th width=300><font color="white"><h4 align="center">Employee Name</h4></font></th>
+         <th width=250><font color="white"><h4 align="center">Designation</h4></font></th>
+         <th width=250><font color="white"><h4 align="center">Department</h4></font></th>
+         <th width=250><font color="white"><h4 align="center">Date of joining</h4></font></th>
+         <th width=200><font color="white"><h4 align="center">Action</h4></font></th>
        </tr>
 
      <?php
