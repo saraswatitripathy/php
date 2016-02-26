@@ -7,7 +7,7 @@ include'connection.php';
 
   if(isset($_GET['a']))
     {
-    $mysql="SELECT transactionid,mas_employee.empid, mas_employee.empname, mas_employee.doj, mas_employee.dol, 
+    $mysql="SELECT transactionid,mas_employee.empid, mas_employee.empname, assigndate, releasedate, remarks,
      tblasseststock.assestnamee,mas_assestitem.serialassestid,mas_assestitem.serialno FROM  php.tbltransaction 
      left join mas_employee on tbltransaction.emp_id=php.mas_employee.empid
      left join mas_assestitem on tbltransaction.serialassest_id2=php.mas_assestitem.serialassestid 
@@ -24,8 +24,8 @@ include'connection.php';
            $empid=$row1['empid'];
            $serialassestid2=$row1['serialassestid'];
            $assestnamee=$row1['assestnamee'];
-           $assigndate=$row1['doj'];
-           $releasedate=$row1['dol'];
+          $assigndate=date('d/m/y',strtotime($row1['assigndate']));
+           $releasedate=date('d/m/y',strtotime($row1['releasedate']));
            $serialno=$row1['serialno']; 
            $stock_id1=$row1['stock_id1'];
            $remarks=$row1['remarks'];
@@ -44,16 +44,16 @@ include'connection.php';
           $empid=$_POST['empid'];
           $serialassestid2=$_POST['serialassestid'];
           $assestnamee=$_POST['assestnamee'];
-          $assigndate=$_POST['doj'];
-          $releasedate=$_POST['dol']; 
+          $assigndate=date('Y-m-d',strtotime($_POST['assigndate']));
+           $releasedate=date('Y-m-d',strtotime($_POST['releasedate']));
           $serialno=$_POST['serialno'];
           $stock_id1=$_POST['stock_id1'];
           $remarks=$_POST['remarks'];
 
        if($transactionid1=='')
             {
-         $sql = "INSERT INTO tbltransaction"."(emp_id,serialassest_id2,stock_id1) ". 
-         "VALUES('".$empname."','".$serialno."','".$assestnamee."')";
+          $sql = "INSERT INTO tbltransaction"."(emp_id,serialassest_id2,stock_id1,assigndate,releasedate, remarks) ". 
+         "VALUES('".$empname."','".$serialno."','".$assestnamee."','".$assigndate."','".$releasedate."','".$remarks."')";
                
             
            $retval = mysql_query( $sql);
@@ -62,8 +62,8 @@ include'connection.php';
 
        else
           {
-            $mysql1="UPDATE tbltransaction SET emp_id='".$empname."',assigndate='".$doj."', releasedate='".$dol."',
-             serialassest_id2='".$serialno."',stock_id1='".$assestnamee."' where transactionid=".$transactionid1;
+            $mysql1="UPDATE tbltransaction SET emp_id='".$empname."',assigndate='".$assigndate."', releasedate='".$releasedate."',
+             serialassest_id2='".$serialno."',stock_id1='".$assestnamee."',remarks='".$remarks."' where transactionid=".$transactionid1;
 
           $retval1 = mysql_query( $mysql1);
           
@@ -86,6 +86,12 @@ include'connection.php';
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script>
+
+    $(function() {
+    $( ".datepicker" ).datepicker();
+
+    });
+
     function addconfig(){
       var del=confirm("Are you sure you want to inseret this record?");
       if (del==true){
@@ -250,46 +256,17 @@ include'connection.php';
      </tr>
 
   
-     <!--<tr>
-        <td width = "200">Date Of Assigning: </td>
-        <td><select name="doj">
-            <option selected="selected">Select assigning date</option>
-            <?php
-                $select="SELECT * FROM organization_detail.mas_employee";
-                $res= mysql_query($select);
-
-                while($row2=mysql_fetch_array($res))
-                {
-                
-                    echo "<option value='".$row2['empid']."'>".$row2['doj']."</option>";
-                  
-                }
-                ?>
-            
-                </select><br />
-         
-              </td>
-     </tr>
-  
      <tr>
-        <td width = "100">Date Of Releasing: </td>
-         <td><select name="dol">
-            <option selected="selected">Select releasing date</option>
-            <?php
-                $select="SELECT * FROM organization_detail.mas_employee";
-                $res= mysql_query($select);
+          <td width = "200">Assign Date:</td>
+          <td><input name = "assigndate" type = "text" id = "assigndate" class="datepicker" value= "<?php echo $assigndate;?>">
+          </td>
+          </tr>
 
-                while($row2=mysql_fetch_array($res))
-                {
-                
-                    echo "<option value='".$row2['empid']."'>".$row2['dol']."</option>";
-                  
-                }
-                ?>
-            
-                </select><br />
-
-         </td></tr>-->
+          <tr>
+          <td width = "200">Release Date:</td>
+          <td><input name = "releasedate" type = "text" id = "releasedate" class="datepicker"  value= "<?php echo $releasedate;?>">
+          </td>
+          </tr>
 
           <tr>
           <td width = "200">Remarks:</td>
