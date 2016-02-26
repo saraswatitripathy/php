@@ -177,7 +177,7 @@ include'connection.php';
        <th width=100><input type="checkbox"></th>
        <th width=100><font color="white"><h4 align="center">Stock id</h4></th>
        <th width=350><font color="white"><h4 align="center">Asset Name</h4></th>
-       <th width=250><font color="white"><h4 align="center">Quantity</h4></th>
+       <th width=200><font color="white"><h4 align="center">Quantity</h4></th>
        <th width=200><font color="white"><h4 align="center">Total count</h4></th>
        <th width=270><font color="white"><h4 align="center">Vender Name</h4></th>
        <th width=160><font color="white"><h4 align="center">Website</h4></th>
