@@ -119,7 +119,7 @@ include'connection.php';
       </ul>
     <li><a href='#'>Assignment</a>
       <ul>
-      <li><a href='transactiondetail.php'>Assignment detail</a></li>
+      <li><a href='transactiondetail.php'>Assignment Detail</a></li>
       <li><a href='addtransactiondetail.php'> Add Assignment</a>
       </li>
       </ul>
