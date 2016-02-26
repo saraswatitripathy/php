@@ -92,7 +92,7 @@ include'connection.php';
         </tr>
         <?php
 
-          $sql1="SELECT transactionid,mas_employee.empname, mas_employee.doj, mas_employee.dol, tblasseststock.stockid,
+          $sql1="SELECT transactionid,mas_employee.empname, assigndate, releasedate,remarks, tblasseststock.stockid,
           tblasseststock.assestnamee,mas_assestitem.serialassestid, mas_assestitem.serialno FROM  php.tbltransaction 
           left join mas_employee on tbltransaction.emp_id=php.mas_employee.empid
           left join mas_assestitem on tbltransaction.serialassest_id2=php.mas_assestitem.serialassestid
@@ -108,8 +108,8 @@ include'connection.php';
            $transactionid=$row1['transactionid'];
            $empname = $row1['empname'];
            $assestname=$row1['assestnamee'];
-           $assigndate=$row1['doj'];
-           $releasedate=$row1['dol']; 
+           $assigndate=$row1['assigndate'];
+           $releasedate=$row1['releasedate']; 
            $slno=$row1['serialno'];
            
          echo  "<tr height=40>
