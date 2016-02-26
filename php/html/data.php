@@ -89,6 +89,7 @@ include'connection.php';
           <th width=200><font color="white">Serial No</th>
           <th width=300><font color="white">Date of assigning</th>
           <th width=250><font color="white">Date of releasing</th>
+          <th width=250><font color="white">Remarks</th>
         </tr>
         <?php
 
@@ -111,6 +112,8 @@ include'connection.php';
            $assigndate=$row1['assigndate'];
            $releasedate=$row1['releasedate']; 
            $slno=$row1['serialno'];
+           $remarks=$row1['remarks'];
+           
            
          echo  "<tr height=40>
         
@@ -120,6 +123,7 @@ include'connection.php';
          <td>".$slno."</td>
          <td>".$assigndate."</td>
          <td>".$releasedate."</td>
+          <td>".$remarks."</td>
          </tr>";
         
          }
