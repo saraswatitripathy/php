@@ -176,13 +176,13 @@ include'connection.php';
        <tr height=40 style="background:url(img/bg1.jpeg);">
        <th width=100><input type="checkbox"></th>
        <th width=100><font color="white"><h4 align="center">Stock id</h4></th>
-       <th width=300><font color="white"><h4 align="center">Asset Name</h4></th>
+       <th width=290><font color="white"><h4 align="center">Asset Name</h4></th>
        <th width=100><font color="white"><h4 align="center">Quantity</h4></th>
-       <th width=150><font color="white"><h4 align="center">Total count</h4></th>
-       <th width=170><font color="white"><h4 align="center">Purchase Date</h4></th>
+       <th width=160><font color="white"><h4 align="center">Total count</h4></th>
+       <th width=180><font color="white"><h4 align="center">Purchase Date</h4></th>
        <th width=220><font color="white"><h4 align="center">Vender Name</h4></th>
        <th width=160><font color="white"><h4 align="center">Website</h4></th>
-       <th width=100><font color="white"><h4 align="center">Action</h4></th>
+       <th width=90><font color="white"><h4 align="center">Action</h4></th>
        </tr>
 
 
