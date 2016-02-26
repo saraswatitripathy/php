@@ -179,6 +179,8 @@ include'connection.php';
        <th width=350><font color="white">Asset Name</th>
        <th width=270><font color="white">Quantity</th>
        <th width=200><font color="white">Total count</th>
+       <th width=250><font color="white">Vender Name</th>
+       <th width=160><font color="white">Website</th>
        <th width=250><font color="white">Action</th>
        </tr>
 
@@ -204,13 +206,13 @@ include'connection.php';
               $search = "assestnamee='".$assestname."' and stockid='".$stockid."'";
           }
 
-        $sql1="select stockid,quantity,tblasseststock.assestnamee,
-        if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
-        (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount 
-        from tbltransaction 
-        left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
-        right join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id WHERE $search
-        group by tblasseststock.assestnamee ";
+        $sql1="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
+          if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
+          (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
+          left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
+          right join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
+          left join mas_vendor on mas_vendor.vid = tblasseststock.vendor_id WHERE $search
+        group by tblasseststock.stockid order by stockid ";
 
          $result=mysql_query($sql1) or die("not connected");
           $count = mysql_num_rows($result);
@@ -220,11 +222,11 @@ include'connection.php';
          { 
           
          $assestname = $row1['assestnamee'];
-          $query= "select stockid,tblasseststock.assestnamee ,count(serialassestid) as stckcount from tbltransaction
-          left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
-          left join mas_employee on tbltransaction.emp_id = mas_employee.empid
-          left join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
-          where leftemp ='yes'and stockid=".$row1['stockid']." group by tblasseststock.assestnamee order by stockid;";
+          $query= "select stockid,tblasseststock.assestnamee,count(serialassestid) as stckcount from tbltransaction
+            left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
+            left join mas_employee on tbltransaction.emp_id = mas_employee.empid
+            left join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
+            where leftemp ='yes'and stockid=".$row['stockid']." group by tblasseststock.stockid order by stockid;";
           $result1=mysql_query($query) ;
           $count=mysql_num_rows($result1);
           if($count>0)
@@ -239,6 +241,9 @@ include'connection.php';
 
           $assestname = $row1['assestnamee'];
           $quantity=$row1['quantity'];
+           $vname=$row1['vname'];
+          $website=$row1['website'];
+           
 
         echo "<tr height=40>
         <td><input type='checkbox' value=".$row1['stockid']." name='chkbx[]' class='resultcheckbox'></td>
@@ -246,6 +251,8 @@ include'connection.php';
         <td>".$assestname."</td>
         <td>".$quantity."</td>
          <td>".$totalcount1."</td>
+         <td>".$vname."</td>
+        <td>".$website."</td>
         <td><button type='button' name='edit' onclick='editData(".$row1['stockid'].")'> Edit</button></td>
          </tr>";
          }
@@ -260,23 +267,24 @@ include'connection.php';
 
    else{
 
-       $sql="select stockid,quantity,tblasseststock.assestnamee,
+       $sql="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
           if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
           right join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
-          group by tblasseststock.assestnamee ORDER BY stockid LIMIT $start, $limit";
+          left join mas_vendor on mas_vendor.vid = tblasseststock.vendor_id
+          group by tblasseststock.stockid ORDER BY stockid  LIMIT $start, $limit";
 
         $result=mysql_query($sql) or die("not connected");
          while($row=mysql_fetch_array($result))
          { 
             
            $assestname = $row['assestnamee'];
-            $query= "select stockid,tblasseststock.assestnamee ,count(serialassestid) as stckcount from tbltransaction
+            $query= "select stockid,tblasseststock.assestnamee,count(serialassestid) as stckcount from tbltransaction
             left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
             left join mas_employee on tbltransaction.emp_id = mas_employee.empid
             left join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
-            where leftemp ='yes'and stockid=".$row['stockid']." group by tblasseststock.assestnamee order by stockid LIMIT $start, $limit;";
+            where leftemp ='yes'and stockid=".$row['stockid']." group by tblasseststock.stockid order by stockid LIMIT $start, $limit;";
             $result1=mysql_query($query) ;
             $count=mysql_num_rows($result1);
             if($count>0)
@@ -291,6 +299,8 @@ include'connection.php';
 
            $assestname = $row['assestnamee'];
            $quantity=$row['quantity'];
+            $vname=$row['vname'];
+           $website=$row['website'];
 
           echo "<tr height=40>
           <td><input type='checkbox' value=".$row['stockid']." name='chkbx[]' class='resultcheckbox'></td>
@@ -298,6 +308,8 @@ include'connection.php';
           <td>".$assestname."</td>
           <td>".$quantity."</td>
            <td>".$totalcount1."</td>
+           <td>".$vname."</td>
+           <td>".$website."</td>
           <td><button type='button' name='edit' onclick='editData(".$row['stockid'].")'> Edit</button></td>
            </tr>";
         

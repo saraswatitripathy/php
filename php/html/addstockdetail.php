@@ -8,9 +8,10 @@ include'connection.php';
 
   if(isset($_GET['a']))
       {
-      $mysql="SELECT stockid,assestnamee,quantity,remarks
+      $mysql="SELECT stockid,assestnamee,quantity,remarks1,mas_vendor.vname
       FROM  php.tblasseststock
-       where stockid=".$_GET['a'];
+      left join mas_vendor on tblasseststock.vendor_id=organization_detail.mas_vendor.vid
+       where stockid=".$_GET['a']];
 
       $retval1 = mysql_query( $mysql);
 
@@ -21,7 +22,9 @@ include'connection.php';
       $quantity=$row1['quantity'];
       $assestcost=$row1['cost'];
       $description=$row1['description'];
-      $remarks=$row1['remarks'];
+      $remarks1=$row1['remarks1'];
+      $vid=$row1['vendor_id'];
+      $vname=$row1['vname'];
     }
 
   if(isset($_POST['submit'])) {
@@ -35,14 +38,17 @@ include'connection.php';
       $quantity=$_POST['quantity'];
       $assestcost=$_POST['cost'];
       $description=$_POST['description'];
-      $remarks=$_POST['remarks'];
+      $remarks1=$_POST['remarks1'];
+      $vid=$_POST['vendor_id'];
+      $vname=$_POST['vname'];
+
 
        if($stockid1=='')
        {
 
 
-       $sql = "INSERT INTO tblasseststock". "(assestnamee,quantity,remarks) ". 
-      "VALUES('".$assestnamee."','".$quantity."','".$remarks."')";
+       $sql = "INSERT INTO tblasseststock". "(assestnamee,quantity,remarks1,vendor_id) ". 
+      "VALUES('".$assestnamee."','".$quantity."','".$remarks."','".$vname."')";
      
   
            $retval = mysql_query( $sql);
@@ -51,7 +57,7 @@ include'connection.php';
   else
       {
        $mysql1="UPDATE tblasseststock SET assestnamee='".$assestnamee."',
-         quantity='".$quantity."',remarks='".$remarks."' where stockid=".$stockid1;
+         quantity='".$quantity."',remarks1='".$remarks1."',vendor_id='".$vname."' where stockid=".$stockid1;
 
       $retval1 = mysql_query( $mysql1);
       
@@ -180,11 +186,32 @@ include'connection.php';
               </td>
             </tr>
 
+          <tr>
+                <td width = "200">vendor: </td>
+                <td>
+                  <select name="vname">
+                    <option selected="selected">select vendor</option>
+                    <?php
+                        $select="SELECT * FROM php.mas_vendor";
+                        $res= mysql_query($select);
+
+                        while($row2=mysql_fetch_array($res))
+                        {
+                            echo '<option value="'. $row2['vid'].'"'.($vname==$row2['vname'] ? ' selected=\"selected\"' : '') . '>' . $row2['vname'] . '</option>';
+                          
+                        }
+                        ?>
+                    
+                        </select><br/>
+                  </td>
+           </tr>
+
            <tr>
               <td width = "200">Remarks:</td>
-              <td><input name = "remarks" type = "text" id = "remarks"  value= "<?php echo $remarks;?>">
+              <td><input name = "remarks1" type = "text" id = "remarks1"  value= "<?php echo $remarks1;?>">
               </td>
            </tr>
+           
            
 
            <tr>
