@@ -79,17 +79,32 @@ include'connection.php';
             return false;
         }
     else{
-      var del=confirm("Are you sure you want to insert this record?");
-      if (del==true){
-      alert ("record inserted")
-      }else{
-      alert("Record Not inserted")
-      }
-      return del;
-      }
-      }
-    </script>
+      var id = document.getElementById("serialassestid").value;
+        if(id=="" )
+        {
 
+          var del=confirm("Are you sure you want to insert this record?");
+          if (del==true){
+           alert ("Record inserted")
+           }else{
+           alert("Unable to insert record")
+           }
+           return del;
+          }
+        
+          else
+        {
+          var del=confirm("Are you sure you want to update this record?");
+          if (del==true){
+          alert ("Record updated")
+          }else{
+          alert("Unable to update record")
+           }
+           return del;
+        
+        }
+      }
+      }
 </head>
 <body>
   <div class="wrapper">
