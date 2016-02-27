@@ -105,6 +105,7 @@ include'connection.php';
         }
       }
       }
+      </script>
 </head>
 <body>
   <div class="wrapper">
