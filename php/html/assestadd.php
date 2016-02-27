@@ -41,6 +41,9 @@ include'connection.php';
             $stock_id=$_POST['stock_id'];
             $assestnamee=$_POST['assestnamee'];
 
+             $serialassestid1= mysql_real_escape_string($serialassestid1);
+           $assestname_id = mysql_real_escape_string($assestname_id);
+
     
         if($serialassestid1=='')
           {
