@@ -45,6 +45,13 @@ include'connection.php';
            $dol=date('Y-m-d',strtotime($_POST['dol']));
            $leftemp=$_POST['leftemp'];
 
+           $empid1= mysql_real_escape_string($empid1);
+           $empname = mysql_real_escape_string($empname);
+           $designation_id=mysql_real_escape_string($designation_id);
+           $designation=mysql_real_escape_string($designation);
+           $department_id=mysql_real_escape_string($department_id);
+           $department=mysql_real_escape_string($department);
+
           if($empid1=='')
           {
 
