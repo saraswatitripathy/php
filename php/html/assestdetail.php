@@ -295,7 +295,7 @@ include'connection.php';
            $total=ceil($rows/$limit);
          }
     }   echo"</table>";
-     eecho "<ul class='pager' id='pag'>";
+     echo "<ul class='pager' id='pag'>";
       for($i=1;$i<=$total;$i++)
       {
         if($page==$i){
