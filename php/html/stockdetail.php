@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$page=1;
 if (isset($_SESSION['id'])) {
 $_SESSION['id'];
 include'connection.php';
@@ -326,10 +326,15 @@ include'connection.php';
      echo "<ul class='pager' id='pag'>";
       for($i=1;$i<=$total;$i++)
       {
-      if($i==$page) { echo "<li ><a href='?page=".$i."'>".$i."</a></li>"; }
+        if($page==$i){
+      echo "<li ><a href='?page=".$i."'><font color='red'>".$i."</font></a></li>"; 
 
-      else { echo "<li><a href='?page=".$i."'>".$i."</a></li>"; }
+ 
       }
+      else{echo "<li ><a href='?page=".$i."'>".$i."</a></li>"; 
+
+     }
+    }
       echo "</ul>";
       ?>
             </table>
