@@ -88,6 +88,14 @@ include'connection.php';
 
     });
 
+     function isNumber(evt) {
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
+
+        return true;
+    }    
+
 
     function addconfig(){
       var x = document.forms["adddetail"]["assestnamee"].value;
@@ -209,7 +217,7 @@ include'connection.php';
 
            <tr>
               <td width = "200">Quantity:</td>
-              <td><input name = "quantity" type = "text" id = "quantity"  value= "<?php echo $quantity;?>">
+              <td><input name = "quantity" type = "text" id = "quantity" maxlength="10" onkeypress="javascript:return isNumber(event)" value= "<?php echo $quantity;?>">
               </td>
             </tr>
 
