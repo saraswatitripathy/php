@@ -1,10 +1,10 @@
 <?php
 require('fpdf/fpdf.php');
 
-$db_host = 'localhost';
-$db_name = 'organization_detail';
-$db_user = 'root';
-$db_pass = 'password';
+$db_host = '127.9.88.2';
+$db_name = 'php';
+$db_user = 'admincaevTuC';
+$db_pass = 'rRsJYwkR-2P2';
 $connect = new mysqli ($db_host, $db_user, $db_pass, $db_name);
 
 $pdf=new FPDF('L');
@@ -61,7 +61,7 @@ $pdf->Cell(30, 10, 'DEPARTMENT', 1, 0, 'L', 1);
 
 $y_axis = $y_axis + $row_height;
 $result=mysqli_query($connect, "SELECT empid,empname,doj,dol,mas_designation.designation,mas_department.department
-        FROM  organization_detail.mas_employee
+        FROM  php.mas_employee
         left join mas_designation on mas_employee.designation_id=organization_detail.mas_designation.id
         left join mas_department on mas_employee.department_id=organization_detail.mas_department.id 
         ORDER BY empid");
