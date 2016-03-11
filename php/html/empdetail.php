@@ -300,6 +300,9 @@ include'connection.php';
     }
       echo "</ul>";
       ?>
+      <form name="pdf" method ="get" id="pdf" action="pdf2.php" target="_blank">
+       <input id="pdf" class="pdf" type="submit" name="pdf" value="Employee detail in pdf" align="left" onclick="window.open('pdf2.php')">
+          </form>
         </table>
           
         </div>
