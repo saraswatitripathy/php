@@ -1,6 +1,6 @@
 <?php
 
-define('fpdf/FPDF_FONTPATH','font/');
+define('fpdf/font/');
 require('fpdf/fpdf.php');
 
 $db_host = '127.9.88.2';
