@@ -59,7 +59,7 @@ include'connection.php';
             $retval = mysql_query($sql);
             }
         else{
-           $mysql1="UPDATE mas_assestitem SET  assestcost='".$assestcost."', description='".$cvnm."',stock_id='".$assestnamee."'
+           $mysql1="UPDATE mas_assestitem SET assestname_id='".$coassestname."', assestcost='".$assestcost."', description='".$cvnm."',stock_id='".$assestnamee."'
             where serialassestid=".$serialassestid1; 
             $retval2 = mysql_query($mysql1); 
 
