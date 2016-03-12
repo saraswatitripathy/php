@@ -182,6 +182,7 @@ include'connection.php';
        <th width=180><font color="white"><h4 align="center">Purchase Date</h4></th>
        <th width=220><font color="white"><h4 align="center">Vender Name</h4></th>
        <th width=160><font color="white"><h4 align="center">Website</h4></th>
+       <th width=160><font color="white"><h4 align="center">Status</th>
        <th width=90><font color="white"><h4 align="center">Action</h4></th>
        </tr>
 
@@ -207,7 +208,8 @@ include'connection.php';
               $search = "assestnamee='".$assestname."' and stockid='".$stockid."'";
           }
 
-        $sql1="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,tblasseststock.purchasedate,
+        $sql1="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
+        asseststatus.assetstatus,tblasseststock.purchasedate,
           if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
@@ -245,6 +247,7 @@ include'connection.php';
            $vname=$row1['vname'];
           $website=$row1['website'];
           $purchasedate=$row1['purchasedate'];
+          $assetstatus=$row1['assetstatus'];
            
 
         echo "<tr height=40>
@@ -256,6 +259,7 @@ include'connection.php';
         <td>".$purchasedate."</td>
         <td>".$vname."</td>
         <td>".$website."</td>
+         <td>".$assetstatus."</td>
         <td><button type='button' name='edit' onclick='editData(".$row1['stockid'].")'> Edit</button></td>
          </tr>";
          }
@@ -270,7 +274,8 @@ include'connection.php';
 
    else{
 
-       $sql="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,tblasseststock.purchasedate,
+       $sql="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
+        asseststatus.assetstatus,tblasseststock.purchasedate,
           if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
@@ -305,6 +310,7 @@ include'connection.php';
             $vname=$row['vname'];
            $website=$row['website'];
            $purchasedate=$row['purchasedate'];
+            $assetstatus=$row['assetstatus'];
 
           echo "<tr height=40>
           <td><input type='checkbox' value=".$row['stockid']." name='chkbx[]' class='resultcheckbox'></td>
@@ -315,6 +321,7 @@ include'connection.php';
           <td>".$purchasedate."</td>
           <td>".$vname."</td>
           <td>".$website."</td>
+           <td>".$assetstatus."</td>
           <td><button type='button' name='edit' onclick='editData(".$row['stockid'].")'> Edit</button></td>
            </tr>";
         
@@ -338,12 +345,155 @@ include'connection.php';
       echo "</ul>";
       ?>
             </table>
+          </form>
+          <hr>
+
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" align="right">
+  Read about faulty asset
+</button>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Deafult Asset details</h4> </div>
+      <div class="modal-body">
+       <table border='1' class="tbl">
+       <tr height=40 style="background:url(img/bg1.jpeg);">
+       <th width=100><font color="white">Stock id</th>
+       <th width=210><font color="white">Assest Name</th>
+       <th width=170><font color="white">Serial No</th>
+       <th width=170><font color="white">Purchase Date</th>
+       <th width=200><font color="white">Vender Name</th>
+       <th width=160><font color="white">Website</th>
+       <th width=120><font color="white">Status</th>
+        <th width=180><font color="white">Remarks</th>
+       </tr>
+       </tr>
+       <?php
+
+       $sql1="select  stockid,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
+       mas_assestitem.serialno,remarks1,
+       asseststatus.assetstatus,tblasseststock.purchasedate from organization_detail.tblasseststock
+      left join mas_vendor on mas_vendor.vid= organization_detail.tblasseststock.vendor_id
+      left join asseststatus on asseststatus.statusid=organization_detail.tblasseststock.statusid1
+      left join mas_assestitem on mas_assestitem.stock_id=organization_detail.tblasseststock.stockid
+      where statusid1=2";
+
+        $result=mysql_query($sql1) or die("not connected");
+         while($row=mysql_fetch_array($result))
+         { 
+            
+          
+           $serialno = $row['serialno'];
+           $assestname = $row['assestnamee'];
+           $vname=$row['vname'];
+           $website=$row['website'];
+           $purchasedate=$row['purchasedate'];
+           $assetstatus=$row['assetstatus'];
+           $remarks1=$row['remarks1'];
+           
+
+          echo "<tr height=40>
+          <td>".$row['stockid']."</td>
+          <td>".$assestname."</td>
+          <td>".$serialno."</td>
+          <td>".$purchasedate."</td>
+          <td>".$vname."</td>
+          <td>".$website."</td>
+          <td>".$assetstatus."</td>
+          <td>".$remarks1."</td>
+           </tr>";
         
-        </div>
+      
+         }
+       echo"</table>";
+
+      ?>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-    </form>
+    </div>
   </div>
+</div>
+</div>
+
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1" align="left">
+  Read about maintenance
+</button>
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Asset Maintenance details</h4> </div>
+      <div class="modal-body">
+       <table border='1' class="tbl">
+       <tr height=40 style="background:url(img/bg1.jpeg);">
+       <th width=100><font color="white">Stock id</th>
+       <th width=210><font color="white">Assest Name</th>
+       <th width=170><font color="white">Serial No</th>
+       <th width=170><font color="white">Purchase Date</th>
+       <th width=200><font color="white">Vender Name</th>
+       <th width=160><font color="white">Website</th>
+       <th width=120><font color="white">Status</th>
+        <th width=180><font color="white">Remarks</th>
+       </tr>
+       </tr>
+
+       <?php
+
+       $sql2="select tblasseststock.stockid, tblasseststock.assestnamee, mas_assestitem.serialno,tblasseststock.purchasedate,
+        mas_vendor.vname,mas_vendor.website ,remarks from tbltransaction 
+        left join tblasseststock on tblasseststock.stockid= organization_detail.tbltransaction.stock_id1 
+        left join mas_assestitem on mas_assestitem.serialassestid= organization_detail.tbltransaction.serialassest_id2
+        left join mas_vendor on mas_vendor.vid= organization_detail.tbltransaction.v_id
+        where remarks='not working properly'";
+
+        $result1=mysql_query($sql2) or die("not connected");
+         while($row1=mysql_fetch_array($result1))
+         { 
+            
+          
+           $serialno = $row1['serialno'];
+           $assestname = $row1['assestnamee'];
+           $vname=$row1['vname'];
+           $website=$row1['website'];
+           $purchasedate=$row1['purchasedate'];
+           $assetstatus=$row1['assetstatus'];
+           $remarks=$row1['remarks'];
+           
+
+          echo "<tr height=40>
+          <td>".$row1['stockid']."</td>
+          <td>".$assestname."</td>
+          <td>".$serialno."</td>
+          <td>".$purchasedate."</td>
+          <td>".$vname."</td>
+          <td>".$website."</td>
+          <td>".$assetstatus."</td>
+          <td>".$remarks."</td>
+           </tr>";
+        
+      
+         }
+       echo"</table>";
+
+      ?>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
+</div>
+</div>
+    </div>
+</div>
+</div>
+</div>
     <div class="footer" height="20%" width="100%">
      	<h3 align="center">Computer assest management project<br>&copy;Relyon softech limited<br>&reg; certified company</h3>
      </div>

@@ -8,9 +8,10 @@ include'connection.php';
 
   if(isset($_GET['a']))
       {
-      $mysql="SELECT stockid,assestnamee,quantity,remarks1,mas_vendor.vname,purchasedate
+      $mysql="SELECT stockid,assestnamee,quantity,remarks1,mas_vendor.vname,purchasedate,statusid1,asseststatus.assetstatus
       FROM  php.tblasseststock
       left join mas_vendor on tblasseststock.vendor_id=php.mas_vendor.vid
+      left join asseststatus on tblasseststock.statusid1=organization_detail.asseststatus.statusid
        where stockid=".$_GET['a'];
 
       $retval1 = mysql_query( $mysql);
@@ -26,6 +27,8 @@ include'connection.php';
       $vid=$row1['vendor_id'];
       $vname=$row1['vname'];
       $purchasedate=date('d/m/y',strtotime($row1['purchasedate']));
+      $statusid=$row1['statusid'];
+      $assetstatus=$row1['assetstatus'];
     }
 
   if(isset($_POST['submit'])) {
@@ -43,6 +46,8 @@ include'connection.php';
       $vid=$_POST['vendor_id'];
       $vname=$_POST['vname'];
       $purchasedate=date('Y-m-d',strtotime($_POST['purchasedate']));
+      $statusid=$_POST['statusid'];
+      $assetstatus=$_POST['assetstatus'];
 
 
 
@@ -50,8 +55,8 @@ include'connection.php';
        {
 
 
-       $sql = "INSERT INTO tblasseststock". "(assestnamee,quantity,remarks1,vendor_id,purchasedate) ". 
-      "VALUES('".$assestnamee."','".$quantity."','".$remarks."','".$vname."','".$purchasedate."')";
+       $sql = "INSERT INTO tblasseststock". "(assestnamee,quantity,remarks1,vendor_id,purchasedate, statusid1) ". 
+      "VALUES('".$assestnamee."','".$quantity."','".$remarks1."','".$vname."','".$purchasedate."','".$assetstatus."')";
      
   
            $retval = mysql_query( $sql);
@@ -59,9 +64,9 @@ include'connection.php';
 
   else
       {
-       $mysql1="UPDATE tblasseststock SET assestnamee='".$assestnamee."',
-         quantity='".$quantity."',remarks1='".$remarks1."',vendor_id='".$vname."' ,purchasedate='".$purchasedate."'
-         where stockid=".$stockid1;
+       $mysql1="UPDATE tblasseststock SET assestnamee='".$assestnamee."',statusid1='".$assetstatus."',
+         quantity='".$quantity."',remarks1='".$remarks1."',vendor_id='".$vname."',purchasedate='".$purchasedate."'
+          where stockid=".$stockid1;
 
       $retval1 = mysql_query( $mysql1);
       
@@ -245,6 +250,24 @@ include'connection.php';
                 <td><input name = "purchasedate" type = "text" id = "purchasedate" class="datepicker" value= "<?php echo $purchasedate;?>">
                 </td>
              </tr>
+             <tr>
+                <td width = "200">status: </td>
+                <td>
+                  <select name="assetstatus">
+                    <option selected="selected">select status</option>
+                    <?php
+                        $select1="SELECT * FROM php.asseststatus";
+                        $res1= mysql_query($select1);
+
+                        while($row3=mysql_fetch_array($res1))
+                        {
+                            echo '<option value="'. $row3['statusid'].'"'.($assetstatus==$row3['assetstatus'] ? ' selected=\"selected\"' : '') . '>' . $row3['assetstatus'] . '</option>';
+                          
+                        }
+                        ?>
+                    
+                        </select><br/>
+                  </td>
 
            <tr>
               <td width = "200">Remarks:</td>
