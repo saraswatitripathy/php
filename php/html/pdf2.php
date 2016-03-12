@@ -1,6 +1,5 @@
 <?php
 require('fpdf/fpdf.php');
-require('fpdf/');
 
 
 $db_host = '127.9.88.2';
