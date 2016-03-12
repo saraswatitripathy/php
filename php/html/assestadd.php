@@ -26,6 +26,12 @@ include'connection.php';
             $assestcost=$row1['assestcost'];
             $slno=$row1['serialno'];
          }
+         if(!$_FILES['uploadFile']['error'])
+       {
+         $cvnm=$_FILES["uploadFile"]["name"];          
+         move_uploaded_file($_FILES["uploadFile"]["tmp_name"], "uploads/".basename( $_FILES["uploadFile"]["name"]));
+         
+        }
  
     if(isset($_POST['submit']))  {
           {
@@ -36,7 +42,7 @@ include'connection.php';
             $assestname_id=$_POST['assestname_id'];
             $coassestname=$_POST['coassestname'];
             $assestcost=$_POST['assestcost'];
-            $description=$_POST['description'];
+            $cvnm=$_POST['description'];
             $serialno=$_POST['serialno'];
             $stock_id=$_POST['stock_id'];
             $assestnamee=$_POST['assestnamee'];
@@ -48,12 +54,12 @@ include'connection.php';
         if($serialassestid1=='')
           {
            $sql = "INSERT INTO mas_assestitem ". "(assestname_id, assestcost,description,serialno,stock_id) ". 
-          "VALUES('".$coassestname."', '".$assestcost."','".$description."','".$serialno."','".$assestnamee."')";
+          "VALUES('".$coassestname."', '".$assestcost."','".$cvnm."','".$serialno."','".$assestnamee."')";
            
             $retval = mysql_query($sql);
             }
         else{
-           $mysql1="UPDATE mas_assestitem SET  assestcost='".$assestcost."', description='".$description."',stock_id='".$assestnamee."'
+           $mysql1="UPDATE mas_assestitem SET  assestcost='".$assestcost."', description='".$cvnm."',stock_id='".$assestnamee."'
             where serialassestid=".$serialassestid1; 
             $retval2 = mysql_query($mysql1); 
 
@@ -177,7 +183,7 @@ include'connection.php';
     <h3 class="panel-title">Add Asset</h3>
    </div>
    <div class="panel-body" id="cntnt">
-    <form name="adddetail" method = "post" action = "<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="off">
+    <form name="adddetail" method = "post" action = "<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="off" enctype="multipart/form-data">
       <table width = "100%" height="60%" cellspacing = "4" 
            cellpadding = "4">
         
@@ -248,6 +254,10 @@ include'connection.php';
         <td></td>
         <td>
         <input type="submit" name="submit" id="save" value="save" onclick="return addconfig();"></input> </td>                           
+       </tr>
+        <tr>
+          <td width = "200">Description: </td>
+          <td><input type="file" name="uploadFile"></input> </td>
        </tr>
                   
    </table>
