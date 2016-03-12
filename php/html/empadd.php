@@ -189,7 +189,7 @@ include'connection.php';
         <div class="panel-body" id="cntnt"  style="height: auto;">
           <form  name="adddetail" action="<?php echo $_SERVER['PHP_SELF'];?>"
           method = "post" autocomplete="off" >
-          <table border="0" width = "100%" height="60%" cellspacing = "2" 
+          <table border="0" width = "100%" height="55%" cellspacing = "2" 
              cellpadding = "2">
     
              <tr>
