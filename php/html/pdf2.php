@@ -1,6 +1,6 @@
 <?php
 require('fpdf/fpdf.php');
-require('makefont/makefont.php');
+require('fpdf/font/makefont');
 
 
 $db_host = '127.9.88.2';
