@@ -376,10 +376,10 @@ include'connection.php';
 
        $sql1="select  stockid,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
        mas_assestitem.serialno,remarks1,
-       asseststatus.assetstatus,tblasseststock.purchasedate from organization_detail.tblasseststock
-      left join mas_vendor on mas_vendor.vid= organization_detail.tblasseststock.vendor_id
-      left join asseststatus on asseststatus.statusid=organization_detail.tblasseststock.statusid1
-      left join mas_assestitem on mas_assestitem.stock_id=organization_detail.tblasseststock.stockid
+       asseststatus.assetstatus,tblasseststock.purchasedate from php.tblasseststock
+      left join mas_vendor on mas_vendor.vid=php.tblasseststock.vendor_id
+      left join asseststatus on asseststatus.statusid=php.tblasseststock.statusid1
+      left join mas_assestitem on mas_assestitem.stock_id=php.tblasseststock.stockid
       where statusid1=2";
 
         $result=mysql_query($sql1) or die("not connected");
@@ -449,9 +449,9 @@ include'connection.php';
 
        $sql2="select tblasseststock.stockid, tblasseststock.assestnamee, mas_assestitem.serialno,tblasseststock.purchasedate,
         mas_vendor.vname,mas_vendor.website ,remarks from tbltransaction 
-        left join tblasseststock on tblasseststock.stockid= organization_detail.tbltransaction.stock_id1 
-        left join mas_assestitem on mas_assestitem.serialassestid= organization_detail.tbltransaction.serialassest_id2
-        left join mas_vendor on mas_vendor.vid= organization_detail.tbltransaction.v_id
+        left join tblasseststock on tblasseststock.stockid= php.tbltransaction.stock_id1 
+        left join mas_assestitem on mas_assestitem.serialassestid= php.tbltransaction.serialassest_id2
+        left join mas_vendor on mas_vendor.vid= php.tbltransaction.v_id
         where remarks='not working properly'";
 
         $result1=mysql_query($sql2) or die("not connected");
