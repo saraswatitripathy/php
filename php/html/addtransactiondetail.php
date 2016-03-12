@@ -188,7 +188,7 @@ include'connection.php';
     </div>
    <div class="panel-body">
    <form name="adddetail" method = "post" action = "<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="off">
-   <table width = "100%" height="53%" cellspacing = "2" 
+   <table width = "100%" height="55%" cellspacing = "2" 
      cellpadding = "2">
 
      <tr>
