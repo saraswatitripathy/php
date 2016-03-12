@@ -214,7 +214,8 @@ include'connection.php';
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
           right join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
-          left join mas_vendor on mas_vendor.vid = tblasseststock.vendor_id WHERE $search
+          left join mas_vendor on mas_vendor.vid = tblasseststock.vendor_id 
+          left join asseststatus on asseststatus.statusid = tblasseststock.statusid1 WHERE $search
         group by tblasseststock.stockid order by stockid ";
 
          $result=mysql_query($sql1) or die("not connected");
@@ -275,12 +276,13 @@ include'connection.php';
    else{
 
        $sql="select stockid,quantity,tblasseststock.assestnamee,mas_vendor.vname,mas_vendor.website,mas_vendor.address,
-        asseststatus.assetstatus,tblasseststock.purchasedate,
+       asseststatus.assetstatus,tblasseststock.purchasedate,
           if((tblasseststock.quantity-count(mas_assestitem.serialassestid)) = 0,0,
           (tblasseststock.quantity-count(mas_assestitem.serialassestid))) as totalcount from tbltransaction 
           left join mas_assestitem on tbltransaction.serialassest_id2 = mas_assestitem.serialassestid
           right join tblasseststock on tblasseststock.stockid = mas_assestitem.stock_id
           left join mas_vendor on mas_vendor.vid = tblasseststock.vendor_id
+          left join asseststatus on asseststatus.statusid = tblasseststock.statusid1
           group by tblasseststock.stockid ORDER BY stockid  LIMIT $start, $limit";
 
         $result=mysql_query($sql) or die("not connected");
