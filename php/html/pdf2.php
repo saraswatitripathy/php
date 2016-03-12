@@ -1,5 +1,8 @@
 <?php
+define('FPDF_FONTPATH','fpdf/font/');
 require('fpdf/fpdf.php');
+require('makefont/makefont.php');
+
 
 $db_host = '127.9.88.2';
 $db_name = 'php';
