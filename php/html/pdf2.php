@@ -1,5 +1,4 @@
 <?php
-define('FPDF_FONTPATH','fpdf/font/');
 require('fpdf/fpdf.php');
 require('makefont/makefont.php');
 
