@@ -244,10 +244,9 @@ include'connection.php';
           <td width = "200">Serial No:</td>
           <td><input name = "serialno" type = "text" id = "serialno" value= "<?php echo $slno;?>"></td>
        </tr>
-
        <tr>
           <td width = "200">Description: </td>
-          <td><textarea name = "description" type="text" id = "description" ><?php echo $description;?></textarea> </td>
+          <td><input type="file" name="uploadFile"></input> </td>
        </tr>
 
        <tr>
@@ -255,10 +254,7 @@ include'connection.php';
         <td>
         <input type="submit" name="submit" id="save" value="save" onclick="return addconfig();"></input> </td>                           
        </tr>
-        <tr>
-          <td width = "200">Description: </td>
-          <td><input type="file" name="uploadFile"></input> </td>
-       </tr>
+        
                   
    </table>
   </form>
