@@ -364,7 +364,7 @@ include'connection.php';
         <h4 class="modal-title" id="myModalLabel">Deafult Asset details</h4> </div>
       <div class="modal-body">
        <table border='1' class="tbl">
-       <tr height=40 style="background:url(img/bg1.jpeg);">
+       <tr height=35 style="background:url(img/bg1.jpeg);">
        <th width=100><font color="white">Stock id</th>
        <th width=210><font color="white">Assest Name</th>
        <th width=170><font color="white">Serial No</th>
