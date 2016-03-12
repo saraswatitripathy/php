@@ -190,8 +190,8 @@ include'connection.php';
       <div class="information" style="height: auto;">
        <hr>
         <form name="dlt" method ="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-              <input id="add" class="addbttn" type="submit" name="add" value="add">
-              <input id="delete" class="delete" type="submit" name="delete" value="delete"
+              <input id="add" class="addbttn" type="submit" name="add" value="Add">
+              <input id="delete" class="delete" type="submit" name="delete" value="Delete"
               onclick=" return deletedata()">
           <hr>
              <div class="fetchng" style="height: auto;">

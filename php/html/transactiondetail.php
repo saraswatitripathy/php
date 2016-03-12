@@ -193,8 +193,8 @@ include'connection.php';
       <div class="information">
       <hr>
         <form name="dlt" method ="post" action="<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="off">
-          <input id="add" class="addbttn" type="submit" name="add" value="add">
-          <input id="delete" class="deletebttn" type="submit" name="delete" value="delete" onClick="return deletedata();">
+          <input id="add" class="addbttn" type="submit" name="add" value="Add">
+          <input id="delete" class="deletebttn" type="submit" name="delete" value="Delete" onClick="return deletedata();">
           <hr>
           <div class="fetchng"style="height: auto;">
            <table border='1' class="tbl">

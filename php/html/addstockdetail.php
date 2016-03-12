@@ -207,7 +207,7 @@ include'connection.php';
         </div>
       <div class="panel-body">
        <form name="adddetail" method = "post" action = "<?php echo $_SERVER['PHP_SELF'];?>"autocomplete="off">
-          <table width = "100%" height="37%" cellspacing = "2" 
+          <table width = "100%" height="42%" cellspacing = "2" 
              cellpadding = "2">
            <tr>
               <td><input name = "stockid" type = "hidden" id = "stockid" value="<?php echo $stockid;?>">
