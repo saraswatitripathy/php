@@ -443,7 +443,6 @@ include'connection.php';
        <th width=170><font color="white">Purchase Date</th>
        <th width=200><font color="white">Vender Name</th>
        <th width=160><font color="white">Website</th>
-       <th width=120><font color="white">Status</th>
         <th width=180><font color="white">Remarks</th>
        </tr>
        </tr>
@@ -478,7 +477,6 @@ include'connection.php';
           <td>".$purchasedate."</td>
           <td>".$vname."</td>
           <td>".$website."</td>
-          <td>".$assetstatus."</td>
           <td>".$remarks."</td>
            </tr>";
         
