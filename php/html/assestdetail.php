@@ -248,7 +248,7 @@ include'connection.php';
                $coassestname=$row1['coassestname'];
                header("Content-type: application/pdf");
                header('Content-disposition: attachment; name="uploadFile"');
-               $file_path = 'http://localhost/uploads/';
+               $file_path = 'http://127.9.88.2/uploads/';
                $src=$file_path.$row1['description'];
 
 

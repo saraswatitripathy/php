@@ -29,7 +29,7 @@ include'connection.php';
          if(!$_FILES['uploadFile']['error'])
        {
          $cvnm=$_FILES["uploadFile"]["name"];          
-         move_uploaded_file($_FILES["uploadFile"]["tmp_name"], "php/html/uploads/".basename( $_FILES["uploadFile"]["name"]));
+         move_uploaded_file($_FILES["uploadFile"]["tmp_name"], "uploads/".basename( $_FILES["uploadFile"]["name"]));
          
         }
  
